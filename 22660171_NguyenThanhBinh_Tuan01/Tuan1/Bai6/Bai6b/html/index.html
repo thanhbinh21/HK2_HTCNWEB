@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="22677941_LUONGMINHTAN_TUAN01" content="HTML co ban">
+    <title>Bài 6b</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .margin-bot-16 {
+            margin-bottom: 16px;
+        }
+        
+        body {
+            width: 99%;
+            margin: 2px auto;
+            border: 1px solid black;
+            width: 700px;
+        }
+        
+        .head-text {
+            position: absolute;
+            display: block;
+            background-color: white;
+            top: -10px;
+            left: 10px;
+        }
+        
+        .head-label {
+            display: inline-block;
+            width: 71px;
+        }
+        
+        .message {
+            display: flex;
+            align-items: center;
+            margin: 2px 0 4px 4px;
+        }
+        
+        select {
+            width: 130px;
+        }
+        
+        button {
+            padding: 2px;
+            border-radius: 3px;
+            margin: 1px 0 12px 1px;
+        }
+        
+        form {
+            padding: 4px;
+        }
+        
+        fieldset {
+            padding: 16px;
+        }
+        
+        input[type="checkbox"] {
+            margin-left: 84px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Contact Us</h1>
+    <form action="">
+        <fieldset>
+            <legend>Your message</legend>
+            <span class="head-label">To</span> <input type="text" placeholder="Example Cafe"> <br>
+            <span class="head-label">Your email</span> <input type="text" name="" id=""> <br>
+            <div class="message">
+                <span class="head-label height-center">Message</span> <textarea name="" id="" cols="50" rows="8"></textarea> <br>
+            </div>
+            <span class="head-label">Attach file</span> <input type="file">
+        </fieldset>
+    </form>
+    <form action="">
+        <fieldset>
+            <legend>How you found us:</legend>
+            <span class="body-label">How did you hear of us</span>
+            <select name="hear us" id="hear-us">
+                    <option value="1">Google</option>
+                    <option value="2">GitHUB</option>
+                    <option value="3">Facebook</option>
+                </select>
+            <br>
+            <span class="body-label">Newsletter</span>
+            <input type="checkbox" class="magin-bot-16"> Ensure this box is checked if you would like to receive email updates
+        </fieldset>
+    </form>
+    <div class="footer">
+        <button>Send message</button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+
+.title{
+    width: 98%;
+    height: 70px;
+}
+.title>img{
+    float: right;
+    height: 70px;
+}
+.all>hr{
+    float: left;
+    width: 97%;
+    border-color: rgb(236, 141, 17);
+}
+
+nav>a{
+    line-height: 5px;
+    border-bottom-style:  hidden;
+    text-decoration: none;
+    margin-left: 10px;
+    font-size: 15px;
+
+}
+nav>hr{
+    border-style: dotted;
+    width: 85%;
+    border-color: rgb(236, 141, 17);
+}
+.noidung{
+    float: left;
+    width: 70%;
+    height: 730px;
+}
+.noidung>hr{
+    border-color: rgb(236, 141, 17);
+}
+.noidung>p{
+    color: rgb(241, 161, 63);
+    margin: auto;
+    margin-left: 90px;
+    font-size: 19px;
+}
