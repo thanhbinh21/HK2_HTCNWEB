@@ -1,0 +1,130 @@
+*{
+    margin:0 auto;
+    padding:0 auto;
+
+}
+.wrapper{
+    width: 1000px;
+    height: 600px;
+    margin-top: 30px;
+    background-color: #61aff1;
+}
+.header{
+    height: 10%;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 3px dotted #fff;
+}
+.header_left,.header_right{
+    margin: 0px;
+}
+.header_left{
+    /* padding-top: 10px; */
+}
+.header_left>ul{
+    list-style: none;
+    display: flex;
+    padding-left: 0;
+}
+.header_left>ul>li a{
+    text-decoration: none;
+    margin: 15px;
+    font-size: 20px;
+    line-height: 60px;
+    color: #fff;
+    font-style: normal;
+    font-weight: 900;
+}
+.header_left>ul>li>a:hover{
+    color: #e0cdcd;
+}
+.header_right>h3{
+    
+    line-height: 100%;
+    font-size: 40px;
+    font-weight: bold;
+    text-shadow: 10px 10px 7px #0b3c65;
+    padding-right: 10px;
+    color: #fff;
+}
+.container{
+    height: 75%;
+    display: flex;
+    padding-left: 5px;
+    border-bottom: 3px dotted #fff;
+}
+.aside{
+    width: 50%;
+    padding-top: 20px;
+    
+    
+}
+.aside_title{
+    color:#fff;
+    font-style: normal;
+    padding-bottom: 3px;
+    font-size: 20px;
+}
+.aside_content{
+    color: #fff;
+}
+.aside_form{
+    display: flex;
+    padding-top: 20px;
+}
+.aside_form ul{
+    display:inline-block   ;
+    margin: 0;
+    list-style: none;
+}
+.aside_form>ul li{
+    margin-bottom: 8px;
+}
+.aside_form-input li input,.aside_form-input li select{
+    border-radius: 5px;
+}
+.aside_form-label--questions{
+    margin-top: 40px 
+}
+.aside_form-input--questions{
+    height: 70px;
+}
+.aside_form-input--questions::placeholder {
+    white-space: pre-line; 
+    position: static;
+    top:-10px;
+}
+.aside_button>button{
+    /* border: 3px dotted #fff; */
+    outline-style: dotted ;
+    margin-right: 5px;
+    outline-color:rgb(239,239,239);
+    
+   
+}
+
+.section{
+    width: 50%;
+   
+}
+.section img{
+  height: 250px;
+  padding: 10px 20px;
+}
+.section>.content {
+    color: blue;
+    padding-left: 30px;
+}
+.section>.content h2{
+    font-size: 30px;
+    text-shadow: 30px 5px 3px blueviolet;
+}
+.section>.content h4{
+    padding-left: 10px;
+    text-shadow: 30px 5px 9px blueviolet;
+}
+.footer{
+    text-align: center;
+    padding-top: 20px;
+    color: #fff;
+}
