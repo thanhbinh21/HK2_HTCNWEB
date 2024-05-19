@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/jquery-3.7.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+</head>
+   <script>
+     $(document).ready(function(){
+        $("#txtTen").blur(function(){
+          valiTen();
+        })
+
+        $("#txtNgaySinh").blur(function(){
+            valiNgaySinh();
+        })
+        
+            
+        
+        $("#selectKhoaHoc").change(function(){
+            showHP();
+        })
+        $(".btn-luu").click(function(){
+            Save();
+        })
+        function showHP(){
+            let kh= $("#selectKhoaHoc").val();
+            let hp=0;
+            if(kh=="1"){
+                hp=100;
+            }else if(kh="2"){
+                hp=200;
+            }else if(kh="3"){
+                hp=300;
+            }else{
+                hp=0;
+            }
+            $("#txtHocPhi").val(hp);
+        }
+        function valiTen() {
+             if ((/^[A-Z][a-z]{1,5}(\s[A-Z][a-z]{1,5})*$/).test($("#txtTen").val())) {
+                 $("#errTen").html("").css("display", "none");
+                 return true;
+             } else {
+                 $("#errTen").html("Nhap SAI");
+                 return flase;
+             }
+        }
+        function valiNgaySinh() {
+             let dob = new Date($("#txtNgaySinh").val());
+             let age = new Date().getFullYear() - dob.getFullYear();
+
+             if (age >= 18) {
+                 $("#errNgaySinh").html("").css("display", "none");
+                 return true;
+             } else {
+                 $("#errNgaySinh").html("Phải lớn hơn 18 tuổi").css("display", "block");
+                 return false;
+             }
+         }
+         stt=1;
+         function Save() {
+             let ten = $("#txtTen").val();
+             let gt = $("input[name='gt']:checked").val();  // Correct way to get checked radio button value
+             let ngaySinh = $("#txtNgaySinh").val();  // Capturing additional data as example
+             let khoaHoc = $("#selectKhoaHoc option:selected").text();  // Capturing additional data as example
+             let hocPhi = $("#txtHocPhi").val();  // Capturing additional data as example
+
+             // Check if both validation functions return true
+             if (valiTen() && valiNgaySinh()) {
+                 $("#tableBody").append(`<tr>
+                    <td>${stt}</td>
+                    <td>${ten}</td>
+                    <td>${gt || 'null'}</td>  // Ensuring we don't write 'undefined' if no gender is selected
+                    <td>${ngaySinh}</td>
+                    <td>${khoaHoc}</td>
+                    <td>${hocPhi}</td>
+                </tr>`);
+
+            }
+
+            
+            stt++;
+         }
+
+    })
+   </script>
+<body> 
+    <div class="container">
+        <div class="row">
+            <img src="../image.png" alt="" srcset="" width="100%">
+
+        </div>
+        <div class="row">
+            <div class="nav">
+                <div class="nav-item">
+                    <a href="" class="nav-link">Trang Chu</a>
+                </div>
+                <div class="nav-item">
+                    <a href="#" class="nav-link" data-toggle="modal" data-target="#myModal" >Dang Ki</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2>LIST OF MEMMBER</h2>
+            </div>
+        </div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>TEN</th>
+                    <th>GIOI TINH</th>
+                    <th>NGAY SINH</th>
+                    <th>KHOA HOC</th>
+                    <th>HOC PHI</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+
+            </tbody>
+        </table>    
+        <div class="modal fade" id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content ">
+                    <div class="modal-header">
+                        <h3 class="col-11">Thong Tin Sinh Vien</h3>
+                        <button class="btn  col-1" type="button " data-dismiss="modal">&times;</button>
+                    
+                    </div>
+                    <div class="modal-body pl-5 pr-5">
+                        <div class="row">
+                            <div class="col-4">HoTen</div>
+                            <div class="col-8">
+                                <input class="d-block col-12"  type="text" name="" id="txtTen" >
+                                <span id="errTen" class="text-danger" >*</span>
+                            </div>
+
+                        </div>
+                        <div class="row pb-3">
+                            <div class="col-4">GIOITINH</div>
+                            <div class="col-8">
+                                <input type="radio" name="gt" id="Nam" value="Nam">
+                                <label for="">Nam</label>
+                                <input type="radio" name="gt" id="Nu" value="Nu">
+                                <label for="">Nu</label>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-4">NGAYSINH</div>
+                            <div class="col-8">
+                                <input class="d-block col-12"  type="date" name="" id="txtNgaySinh" >
+                                <span id="errNgaySinh" class="text-danger" >*</span>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-4">KhoaHoc</div>
+                            <div class="col-8">
+                                <select class="col-12" name="" id="selectKhoaHoc" >
+                                    <option value="" selected>Chon Khoa Hoc !</option>
+                                    <option value="1">Khoa 1 Tuan</option>
+                                    <option value="2">Khoa 2 Tuan</option>
+                                    <option value="3">Khoa 3 Tuan</option>
+
+                                </select>
+                            </div>
+
+                        </div>
+                        <div class="row pt-4 pb-4">
+                            <div class="col-4">HocPhi</div>
+                            <div class="col-8">
+                                <input class="d-block col-12 "  type="text" name="" id="txtHocPhi" disabled>
+                                
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer ">
+                            <div class="col-12">
+                                <button type="button" class="btn-danger btn-luu btn col-12 " data-dismiss="modal">LUU</button>
+                            </div>
+                        
+                    </div>
+                
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

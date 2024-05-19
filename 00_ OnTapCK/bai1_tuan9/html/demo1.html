@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/jquery-3.7.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <style>
+        .modal-body .row>.col-3 {
+            font-weight: 600;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            check = true;
+            $("#hoTen").blur(function () {
+                let ten = $("#hoTen").val();
+                let vali = /[A-Z][a-z]+(\s[A-Z][a-z]+)+/;
+                if (ten === "") {
+                    $(".errTen").html("Khong Rong").css("color", "red");
+                    check = fasle;
+                } else if (!vali.test(ten)) {
+                    $(".errTen").html("Sai").css("color", "red");
+                    check = fasle;
+                } else {
+                    $(".errTen").html("");
+                }
+
+            })
+            $("#sdt").blur(function () {
+                let ten = $("#sdt").val();
+                let vali = /(09|08|07|05)\d{8}/;
+                if (ten === "") {
+                    $(".errSdt").html("Khong Rong").css("color", "red");
+                    check = fasle;
+                } else if (!vali.test(ten)) {
+                    $(".errSdt").html("Sai").css("color", "red");
+                    check = fasle;
+                } else {
+                    $(".errSdt").html("");
+                }
+
+            })
+
+            $("#email").blur(function () {
+                let ten = $("#email").val();
+                let vali = /[A-Za-z]{5}(@iuh.edu.vn)/;
+                if (ten === "") {
+                    $(".errEmail").html("Khong Rong").css("color", "red");
+                    check = fasle;
+                } else if (!vali.test(ten)) {
+                    $(".errEmail").html("Sai").css("color", "red");
+                    check = fasle;
+                } else {
+                    $(".errEmail").html("");
+                }
+
+            })
+            $("#ngay").blur(function () {
+                let ten = $("#ngay").val();
+                let tenDate = new Date(ten);
+                // let re = new Date();
+                // re.setHours(0,0,0,0);
+                // let regex= new Date(re);
+                // regex.setDate(re.getDate()+30);
+                let regex = new Date(2000, 9, 10);
+
+
+
+                if (ten === "") {
+                    $(".errNgay").html("Khong Rong").css("color", "red");
+                    check = fasle;
+                } else if (tenDate <= regex) {
+                    $(".errNgay").html("Sai").css("color", "red");
+                    check = fasle;
+                } else {
+                    $(".errNgay").html("");
+                }
+
+            })
+
+            $("#anh").blur(function () {
+                let fileInput = $("#anh").val();
+                let fileExtension = fileInput.split('.').pop().toLowerCase();
+                if (fileInput === "") {
+                    $(".errAnh").html("Không được để trống").css("color", "red");
+                    check = false;
+                } else if (!["jpg", "jpeg", "png", "pdf"].includes(fileExtension)) {
+                    $(".errAnh").html("Định dạng tệp không hợp lệ").css("color", "red");
+                    check = false;
+                } else {
+                    $(".errAnh").html("");
+                }
+            });
+
+
+            stt = 0;
+            $("#luu").click(function () {
+                check=true;
+                let ten = $("#hoTen").val();
+                let sdt = $("#sdt").val();
+                let email = $("#email").val();
+                let ngay = $("#ngay").val();
+                let gt=$("input[name='gt']:checked").val();
+                
+                let file=$("#anh").val();
+                $("#hoTen").blur();
+                $("#sdt").blur();
+                $("#email").blur();
+                $("#ngay").blur();
+                if (check === true) {
+                    let newRow = "<tr><td>" + stt++ + "</td><td>" + ten + "</td><td>" + sdt + "</td><td>" + email + "</td><td>" + ngay + "</td> <td>" + gt + "</td> <td>" + file + "</td></tr>";
+                    $("#myTable").append(newRow);
+                    $("#myModal").modal("hide");
+                }
+            })
+
+        })
+    </script>
+</head>
+<tr></tr>
+<td></td>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 p-0 ">
+                <img src="../image.png" alt="" srcset="" width="100%" ">
+            </div>
+        </div>
+        <div class=" row">
+                <div class="col-12">
+                    <div class="nav ">
+                        <div class="nav-item"><a href="" class="nav-link">Dang Nhap</a></div>
+                        <div class="nav-item"><a href="#" class="nav-link" data-toggle="modal"
+                                data-target="#myModal">Dang Ki</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h2>Thong Tin</h2>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Hoten</th>
+                                <th>SDT</th>
+                                <th>Email</th>
+                                <th>NgaySinh</th>
+                                <th>GioiTinh</th>
+                                <th>Anh</th>
+                            </tr>
+
+                        </thead>
+                        <tbody id="myTable">
+
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+            <div class="modal fade" id="myModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4>Thong Tin Sinh Vien </h4>
+                            <button type="button" class="btn" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-3">HoTen:</div>
+                                <div class="col-9">
+                                    <input type="text" name="" id="hoTen" class="form-control">
+                                    <span class="errTen">*</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">SDT:</div>
+                                <div class="col-9">
+                                    <input type="text" name="" id="sdt" class="form-control">
+                                    <span class="errSdt">*</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">Email:</div>
+                                <div class="col-9">
+                                    <input type="text" name="" id="email" class="form-control">
+                                    <span class="errEmail">*</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">NgaySinh:</div>
+                                <div class="col-9">
+                                    <input type="date" name="" id="ngay" class="form-control">
+                                    <span class="errNgay">*</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">GioiTinh:</div>
+                                <div class="col-9">
+                                    <input type="radio" name="gt" id="gtNam" value="Nam">
+                                    <label for="">Nam</label>
+                                    <input type="radio" name="gt" id="gtNu" value="Nu">
+                                    <label for="">Nu</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">FileAnh:</div>
+                                <div class="col-9">
+                                    <input type="file" name="" id="anh">
+                                    <span class="errAnh d-block">*</span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class=" modal-footer justify-content-center ">
+                            <button type="button" class="btn-danger btn col-5" id="luu">Luu
+                            </button>
+                            <button type="button" class="btn-secondary btn col-5" data-dismiss="modal">Close </button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</body>
+
+</html>
